@@ -43,5 +43,3 @@ test_setup:
   env_file:
     - ../config/envVars.env
   command: nosetests tests/testEnvVariables.py
-
-  
