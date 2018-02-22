@@ -32,3 +32,16 @@ python:
   volumes:
     - ..:/home
   command: python /home/docker/test_selenium.py #put it on one line, else this command fails
+
+# container that runs test for environmental variables
+test_setup:
+  build: ./test_setup
+  container_name: test_setup
+  volumes:
+    - ..:/home
+  working_dir: /home
+  env_file:
+    - ../config/envVars.env
+  command: nosetests tests/testEnvVariables.py
+
+  
