@@ -1,0 +1,5 @@
+uuid
+crossrefapi
+selenium
+feedparser
+beautifulsoup4

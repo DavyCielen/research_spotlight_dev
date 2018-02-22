@@ -1,0 +1,13 @@
+
+crossrefapi
+feedparser
+
+
+
+# !pip install selenium
+# install chromium web browser
+# sudo apt update
+# Install chromium.
+# sudo apt install chromium-browser
+# install chromedriver
+# sudo apt-get install chromium-chromedriver

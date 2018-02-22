@@ -1,0 +1,50 @@
+#choosing a cloud database
+
+This document considers the backend database to be used by this program.
+
+Factors to take into consideration are:
+
+must haves:
+- supports ANSI SQL
+- good and stable python Library
+- price, cheap use
+- relational datamodel
+- fully managed
+- supported by stable supplier
+Should have:
+- supports latin-1 encoding out of the box
+- support by pandas
+- speedy connection
+Could have:
+- multimodel support (graph, document, ...)
+Won't have:
+- only public access to data
+- high costs
+- only libraries that are not backed up by a large company
+
+alternatives:
+--------------
+
+google bigtable:
+- supports a subset of sql but doesn't support joins -> have to be handled by the application
+google bigquery
+azure cosmosdb
+amazon free rds tier
+IBM cloud
+caspio https://www.caspio.com/pricing/
+heroku postgres https://www.heroku.com/postgres, free to 10K rows
+cloudboost.io free to 200 MB
+oracle cloud https://cloud.oracle.com/tryit, good for free but expensive afterward
+mlab mongodb 500 mb for free
+
+one.com gives us database space. 200 GB. MySQL database
+
+
+
+
+
+notes:
+bigtable does not support joins
+cosmosdb works probably only with pydocumentdb
+amazon free rds tier: only free for 1 month continous use
+IBM cloud is free up to 256 Mb of foundry memory

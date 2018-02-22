@@ -1,0 +1,34 @@
+# zie http://www.compciv.org/topics/bash/variables-and-substitution/
+# if running on windows in VM, don't forget to share the directories else will not copy
+# take care that you run the docker-compose command from inside the docker folder
+selenium-hub:
+  image: selenium/hub
+  container_name: erc_research_spotlight_selenium_selenium
+  ports:
+    - 4444:4444
+
+chrome:
+  image: selenium/node-chrome
+  container_name: erc_research_spotlight_selenium_chrome
+  links:
+    - selenium-hub:hub
+  volumes:
+    - /dev/shm:/dev/shm # Mitigates the Chromium issue described at https://code.google.com/p/chromium/issues/detail?id=519952
+
+firefox:
+  image: selenium/node-firefox
+  container_name: erc_research_spotlight_selenium_firefox
+  environment:
+    HUB_PORT_4444_TCP_ADDR: hub
+  links:
+    - selenium-hub:hub
+
+python:
+  build: ./rs_python
+  container_name: erc_research_spotlight_python
+  links:
+    - selenium-hub:hub
+  #working_dir: /home/docker/research_spotlight
+  volumes:
+    - ..:/home
+  command: python /home/docker/test_selenium.py #put it on one line, else this command fails
